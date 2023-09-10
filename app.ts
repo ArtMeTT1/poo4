@@ -94,4 +94,9 @@ export class App {
         }
         console.log('\n')
     }
+    userAuthentication(userId: string, password: string): boolean{
+        let authUser: User = this.users.find(user => user.id == userId)
+        if(authUser == undefined || authUser.password != password) return false
+        else return true
+    }
 }
