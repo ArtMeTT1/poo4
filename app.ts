@@ -61,8 +61,8 @@ export class App {
         console.log('bike returned')
     }
 
-    listUsers(): void {
-        for(let x in this.users){
+    listUsers(): User {
+        return this.users.slice() for(let x in this.users){
             console.log("Name: ",this.users[x].name)
             console.log("email: ",this.users[x].email)
             console.log("id: ",this.users[x].id)
@@ -70,29 +70,11 @@ export class App {
         console.log('\n')
     }
 
-    listRents():void{
-        for(let x in this.rents){
-            console.log("Bike rented: ",this.rents[x].bike.name)
-            console.log("User: ",this.rents[x].user.name)
-            console.log("BikeId: ",this.rents[x].bike.id)
-            console.log("Start date: ",this.rents[x].dateFrom)
-            console.log("End date: ",this.rents[x].dateTo)
-            if(this.rents[x].dateReturned) console.log("Returned date: ",this.rents[x].dateReturned)
-        }
-        console.log('\n')
+    listRents():Rent{
+       return this.rents.slice()
     }
-    listBikes():void{
-        for(let x in this.bikes){
-            console.log("Bike name: ",this.bikes[x].name)
-            console.log("Type: ",this.bikes[x].type)
-            console.log("Body size: ",this.bikes[x].bodySize)
-            console.log("max Load: ",this.bikes[x].maxLoad)
-            console.log("Rate: ",this.bikes[x].rate)
-            console.log("Descryption: ",this.bikes[x].description)
-            console.log("Ratings: ",this.bikes[x].ratings)
-            console.log("Bike id: ",this.bikes[x].id)
-        }
-        console.log('\n')
+    listBikes():Bike{
+        return this.bikes.slice()
     }
     userAuthentication(userId: string, password: string): boolean{
         let authUser: User = this.users.find(user => user.id == userId)
